@@ -13,3 +13,15 @@ Assessment(A2):
   upperArm: 23.3
   waist: 31.0
   hips: 36.0
+
+Member(M1):
+  name: Homer Simpson
+  email: homer@simpson.com
+  password: password
+  address: Springfeild
+  gender: Male
+  height: 190.00
+  startingWeight: 200
+  assessmentList:
+  - A1
+  - A2
