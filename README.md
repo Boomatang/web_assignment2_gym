@@ -1,2 +1,3 @@
-# web_assignment2_gym
-Basic gym app for a assignment
+# Web Assignment 2 Gym
+
+This is a simple web app that is based around a gym.

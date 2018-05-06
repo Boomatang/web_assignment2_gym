@@ -1,0 +1,42 @@
+#{extends 'main.html' /}
+#{set title:'Dashboard' /}
+
+#{menu id:"dashboard"/}
+
+<section class="ui raised segment">
+  <header class="ui header">
+    Assessment List
+  </header>
+  <table class="ui fixed table">
+    <thead>
+    <tr>
+      <th>Weight</th>
+      <th>Chest</th>
+      <th>Thigh</th>
+      <th>Upper Arm</th>
+      <th>Waist</th>
+      <th>Hips</th>
+    </tr>
+    </thead>
+    <tbody>
+    #{list items: assessmentList, as: 'assessment'}
+    <tr>
+      <td> ${assessment.weight} </td>
+      <td> ${assessment.chest} </td>
+      <td> ${assessment.thigh} </td>
+      <td> ${assessment.upperArm} </td>
+      <td> ${assessment.waist} </td>
+      <td> ${assessment.hips} </td>
+    #{/list}
+    </tbody>
+  </table>
+
+</section>
+
+<form class="ui stacked segment form" action="#" method="POST">
+  <div class="field">
+    <label>Title</label>
+    <input placeholder="Title" type="text" name="title">
+  </div>
+  <button class="ui blue submit button">Add Assessment</button>
+</form>
