@@ -12,7 +12,7 @@ public class Dashboard extends Controller
   public static void index()
   {
     Logger.info("Rendering Dashboard");
-    Member member = Member.findByEmail("homer@simpson.com");
+    Member member = Accounts.getLoggedInMember();
     render("dashboard.html", member);
   }
 
@@ -24,7 +24,7 @@ public class Dashboard extends Controller
             Float.valueOf(upperArm),
             Float.valueOf(waist),
             Float.valueOf(hips));
-    Member member = Member.findByEmail("homer@simpson.com");
+    Member member = Accounts.getLoggedInMember();
     member.assessmentList.add(assessment);
     member.save();
     Logger.info("New assessment added");

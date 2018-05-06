@@ -8,7 +8,11 @@ GET     /dashboard                              Dashboard.index
 POST    /dashboard/addassessment                Dashboard.addAssessment
 GET     /admin                                  Admin.index
 GET     /about                                  About.index
-
+GET     /signup                                 Accounts.signup
+GET     /login                                  Accounts.login
+GET     /logout                                 Accounts.logout
+POST    /register                               Accounts.register
+POST    /authenticate                           Accounts.authenticate
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

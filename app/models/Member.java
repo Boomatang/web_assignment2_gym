@@ -27,14 +27,21 @@ public class Member extends Model {
         this.startingWeight = startingWeight;
     }
 
-    public float currentBMI() {
-//        TODO fill this out to return the correct result
-        return 42.66f;
-    }
-
     public static Member findByEmail(String email){
 
         return find("email", email).first();
     }
 
+    public boolean checkPassword(String password) {
+        return this.password.equals(password);
+    }
+
+    public float currentBMI() {
+//        TODO fill this out to return the correct result
+        return 42.66f;
+    }
+
+    private String determineBMICategory() {
+        return "SEVERELY OVERWEIGHT";
+    }
 }
