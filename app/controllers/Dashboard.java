@@ -12,7 +12,12 @@ public class Dashboard extends Controller
   public static void index()
   {
     Logger.info("Rendering Dashboard");
+
     Member member = Accounts.getLoggedInMember();
+
+    if (member.isTrainer()) {
+      Logger.info("There is a trainer logged in");
+    }
     render("dashboard.html", member);
   }
 

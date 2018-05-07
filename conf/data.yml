@@ -22,6 +22,16 @@ Member(M1):
   gender: Male
   height: 190.00
   startingWeight: 200
+  status: member
   assessmentList:
   - A1
   - A2
+
+Member(M2):
+  name: Bart Simpson
+  email: b@s.c
+  password: p
+  gender: male
+  height: 140.00
+  startingWEight: 70.00
+  status: trainer

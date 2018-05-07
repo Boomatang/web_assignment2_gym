@@ -41,15 +41,13 @@
   </section>
 </section>
 
-#{addAssessment /}
-
-
-
 <section class="ui raised segment">
   <header class="ui header">
     Assessment List
   </header>
-  <table class="ui fixed table">
+#{list items: member.assessmentList, as: 'assessment'}
+
+<table class="ui fixed table">
     <thead>
     <tr>
       <th>Weight</th>
@@ -62,7 +60,6 @@
     </tr>
     </thead>
     <tbody>
-    #{list items: member.assessmentList, as: 'assessment'}
     <tr>
       <td> ${assessment.weight} </td>
       <td> ${assessment.chest} </td>
@@ -70,10 +67,22 @@
       <td> ${assessment.upperArm} </td>
       <td> ${assessment.waist} </td>
       <td> ${assessment.hips} </td>
-      <td></td>
-    #{/list}
+      <td> ${assessment.comment} </td>
+    </tr>
     </tbody>
   </table>
+  <section class="ui container">
+    <form class="ui form" method="post" action="/admin/assessment/${assessment.id}/addcomment ">
+      <div class="field">
+        <label for="comment">Comments</label>
+        <textarea id="comment" rows="2" name="comment">${assessment.comment}</textarea>
+      </div>
+      <button class="ui blue submit button">Update</button>
+
+    </form>
+  </section>
+#{/list}
+
 
 </section>
 

@@ -1,27 +1,32 @@
 #{extends 'main.html' /}
 #{set title:'Admin' /}
+#{menu id:'dashboard'/}
 
 <section class="ui raised segment">
   <header class="ui header">
-    Assessment List
+    Member List
   </header>
-  <table class="ui fixed table">
-    <thead>
-    <tr>
-      <th>Id</th>
-      <th>Assessment</th>
-    </tr>
-    </thead>
-    <tbody>
-    <div class="ui bulleted list">
-      #{list items:todolist, as:'assessment'}
-        <tr>
-          <td> ${assessment.id} </td>
-          <td> ${assessment.title} </td>
-        </tr>
-      #{/list}
+
+  <section class="ui link items raised segment">
+  #{list items:memberlist, as:'member'}
+    <div class="item">
+      <div class="ui tiny image">
+        <i class="huge github icon"></i>
+      </div>
+
+
+      <div class="content">
+        <div class="header">${member.name}</div>
+
+        <div class="description">
+          <a href="/admin/user/${member.id}/dashboard">
+          ${member.assessmentList.size()} Assessments
+          </a>
+        </div>
+      </div>
+
     </div>
-    </tbody>
-  </table>
+  #{/list}
+  </section>
 
 </section>

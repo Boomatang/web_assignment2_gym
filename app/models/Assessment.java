@@ -13,6 +13,7 @@ public class Assessment extends Model
   public float upperArm;
   public float waist;
   public float hips;
+  public String comment = "";
 
 
   public Assessment(float weight, float chest, float thigh, float upperArm, float waist, float hips) {

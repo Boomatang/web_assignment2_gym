@@ -53,4 +53,24 @@ public class Accounts extends Controller {
         }
         return member;
     }
+
+    public static void accountSettings() {
+        Member member = Accounts.getLoggedInMember();
+        render("account.html", member);
+    }
+
+    public static void update(String name, String gender, String email, String password, String address, String height, String weight) {
+        Member member = Accounts.getLoggedInMember();
+        member.name = name;
+        member.gender = gender;
+        member.email = email;
+        member.password = password;
+        member.address = address;
+        member.height = Float.valueOf(height);
+        member.startingWeight = Float.valueOf(weight);
+
+        member.save();
+
+        redirect("/dashboard");
+    }
 }

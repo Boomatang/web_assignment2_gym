@@ -7,12 +7,17 @@ GET     /                                       Start.index
 GET     /dashboard                              Dashboard.index
 POST    /dashboard/addassessment                Dashboard.addAssessment
 GET     /admin                                  Admin.index
+GET     /admin/user/{id}/dashboard              Admin.userDashboard
+POST     /admin/assessment/{id}/addcomment       Admin.addComment
 GET     /about                                  About.index
 GET     /signup                                 Accounts.signup
 GET     /login                                  Accounts.login
 GET     /logout                                 Accounts.logout
 POST    /register                               Accounts.register
 POST    /authenticate                           Accounts.authenticate
+GET     /account                                Accounts.accountSettings
+POST    /account/update                         Accounts.update
+
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

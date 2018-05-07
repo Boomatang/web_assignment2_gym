@@ -1,5 +1,6 @@
 package models;
 
+import controllers.Status;
 import play.db.jpa.Model;
 
 import javax.persistence.CascadeType;
@@ -11,7 +12,7 @@ import java.util.List;
 @Entity
 public class Member extends Model {
 
-    public String name, email, password, address, gender;
+    public String name, email, password, address, gender, status;
     public float height, startingWeight;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -25,6 +26,7 @@ public class Member extends Model {
         this.gender = gender;
         this.height = height;
         this.startingWeight = startingWeight;
+        status = Status.MEMBER;
     }
 
     public static Member findByEmail(String email){
@@ -43,5 +45,13 @@ public class Member extends Model {
 
     private String determineBMICategory() {
         return "SEVERELY OVERWEIGHT";
+    }
+
+    public String weightStatus() {
+        return "red";
+    }
+
+    public boolean isTrainer() {
+        return status.equals(Status.TRAINER);
     }
 }
