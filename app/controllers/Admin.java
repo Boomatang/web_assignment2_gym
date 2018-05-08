@@ -16,7 +16,7 @@ public class Admin extends Controller
     if (member.isTrainer()) {
       Logger.info("Rendering Admin");
       List<Member> memberlist = Member.findAll();
-      render("admin.html", memberlist);
+      render("admin.html", memberlist, member);
     } else {
       Logger.info("Un-trainer tried to access admin pages");
       redirect("/dashboard");
@@ -24,12 +24,12 @@ public class Admin extends Controller
   }
 
   public static void userDashboard(Long id) {
-    Member trainer = Accounts.getLoggedInMember();
+    Member member = Accounts.getLoggedInMember();
 
-    if(trainer.isTrainer()) {
-      Member member = Member.findById(id);
+    if(member.isTrainer()) {
+      Member user = Member.findById(id);
 
-      render("adminUserDashboard.html", member);
+      render("adminUserDashboard.html", member, user);
 
     } else {
       Logger.info("None trainer tried to access information");

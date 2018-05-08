@@ -1,6 +1,6 @@
 #{extends 'main.html' /}
 #{set title:'Admin' /}
-#{menu id:'dashboard'/}
+#{menu id:'admin', member:member/}
 
 <section class="ui raised segment">
   <header class="ui header">
@@ -8,7 +8,7 @@
   </header>
 
   <section class="ui link items raised segment">
-  #{list items:memberlist, as:'member'}
+  #{list items:memberlist, as:'user'}
     <div class="item">
       <div class="ui tiny image">
         <i class="huge github icon"></i>
@@ -16,11 +16,16 @@
 
 
       <div class="content">
-        <div class="header">${member.name}</div>
+        <div class="header">${user.name}
+      #{if user.isTrainer()}
+        &nbsp; <a class="ui red tag label">Trainer</a>
+        #{/if}
+
+      </div>
 
         <div class="description">
-          <a href="/admin/user/${member.id}/dashboard">
-          ${member.assessmentList.size()} Assessments
+          <a href="/admin/user/${user.id}/dashboard">
+          ${user.assessmentList.size()} Assessments
           </a>
         </div>
       </div>

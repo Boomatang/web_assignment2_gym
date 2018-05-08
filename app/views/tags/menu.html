@@ -1,10 +1,33 @@
 <nav class="ui menu">
-  <header class="ui header item"> <a href="/"> Play Gym </a></header>
+  <header class="ui header item"><a href="/">
+
+  #{if _member != null && _member.isTrainer()}
+    Play Gym Trainer
+  #{/if}
+  #{else}
+    Play Gym
+  #{/else}
+  </a></header>
+
+#{if _member != null && _member.isTrainer()}
+<div class="left menu">
+
+  <a id="admin" class="item" href="/admin"> Members </a>
+</div>
+#{/if}
+
   <div class="right menu">
-    <a id="dashboard" class="item" href="/dashboard"> Dashboard  </a>
+
+  #{if session.contains("logged_in_Memberid")}
+    <a id="dashboard" class="item" href="/dashboard"> Dashboard </a>
     <a id="about" class="item" href="/about"> About </a>
     <a id="logout" class="item" href="/logout">Logout</a>
     <a id="account" class="item" href="/account">Account &nbsp;<i class="edit icon"></i></a>
+  #{/if}
+  #{else}
+    <a id="signup" class="item" href="/signup">Signup</a>
+    <a id="login" class="item" href="/login">Login</a>
+  #{/else}
   </div>
 </nav>
 

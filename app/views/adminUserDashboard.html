@@ -1,19 +1,19 @@
 #{extends 'main.html' /}
 #{set title:'Dashboard' /}
 
-#{menu id:"dashboard"/}
+#{menu id:"admin", member:member/}
 <section class="ui equal width grid raised segment">
 
   <section class="ui column">
     <h2 class="ui center aligned icon header">
       <i class="user icon"></i>
-    ${ member.name.toUpperCase()}
+    ${ user.name.toUpperCase()}
     </h2>
   </section>
 
   <section class="ui column">
     <h2 class="ui center aligned icon header">
-      <i class="${member.weightStatus()} dashboard icon"></i>
+      <i class="${user.weightStatus()} dashboard icon"></i>
       IDEAL WEIGHT INDICATOR
     </h2>
   </section>
@@ -21,7 +21,7 @@
   <section class="ui center aligned  column">
     <div class="ui statistic">
       <div class="value">
-        <i class="heartbeat icon"></i> ${ member.currentBMI() }
+        <i class="heartbeat icon"></i> ${ user.currentBMI() }
       </div>
       <div class="label">
         <h2>BMI</h2>
@@ -35,7 +35,7 @@
         <i class="user md icon"></i>
       </div>
       <div class="label">
-        <h2> ${ member.determineBMICategory() }</h2>
+        <h2> ${ user.determineBMICategory() }</h2>
       </div>
     </div>
   </section>
@@ -45,7 +45,7 @@
   <header class="ui header">
     Assessment List
   </header>
-#{list items: member.assessmentList, as: 'assessment'}
+#{list items: user.assessmentList, as: 'assessment'}
 
 <table class="ui fixed table">
     <thead>
