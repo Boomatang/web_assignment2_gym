@@ -33,5 +33,5 @@ Member(M2):
   password: p
   gender: male
   height: 140.00
-  startingWEight: 70.00
+  startingWeight: 170.00
   status: trainer

@@ -9,6 +9,8 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Math.pow;
+
 @Entity
 public class Member extends Model {
 
@@ -39,16 +41,58 @@ public class Member extends Model {
     }
 
     public float currentBMI() {
-//        TODO fill this out to return the correct result
-        return 42.66f;
+        double output;
+
+        if (assessmentList.size() == 0){
+            output = (startingWeight / (pow(height/100, 2)));
+         } else {
+            Assessment assessment = assessmentList.get(assessmentList.size() -1);
+            output = (assessment.weight / (pow(height/100, 2)));
+        }
+
+        return Math.round(output);
     }
 
     private String determineBMICategory() {
-        return "SEVERELY OVERWEIGHT";
+        String massage;
+        double bmiValue = currentBMI();
+
+        if (bmiValue < 16) {
+            massage = "SEVERELY UNDERWEIGHT";
+        } else if (bmiValue < 18.5) {
+            massage = "UNDERWEIGHT";
+        } else if (bmiValue < 25) {
+            massage = "NORMAL";
+        } else if (bmiValue < 30) {
+            massage = "OVERWEIGHT";
+        } else if (bmiValue < 35) {
+            massage = "MODERATELY OVERWEIGHT";
+        } else {
+            massage = "SEVERELY OVERWEIGHT";
+        }
+
+        return massage;
     }
 
     public String weightStatus() {
-        return "red";
+        String massage;
+        double bmiValue = currentBMI();
+
+        if (bmiValue < 16) {
+            massage = "red";
+        } else if (bmiValue < 18.5) {
+            massage = "yellow";
+        } else if (bmiValue < 25) {
+            massage = "green";
+        } else if (bmiValue < 30) {
+            massage = "blue";
+        } else if (bmiValue < 35) {
+            massage = "yellow";
+        } else {
+            massage = "red";
+        }
+
+        return massage;
     }
 
     public boolean isTrainer() {

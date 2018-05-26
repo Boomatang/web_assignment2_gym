@@ -12,6 +12,13 @@ public class About extends Controller
   public static void index()
   {
     Logger.info("Rendering about");
-    render("about.html");
+
+    Member member = Accounts.getLoggedInMember();
+
+    if (member.isTrainer()) {
+      Logger.info("There is a trainer logged in");
+    }
+
+    render("about.html", member);
   }
 }
